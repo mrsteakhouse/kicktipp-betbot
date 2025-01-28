@@ -97,7 +97,7 @@ $ kicktippbb.py --matchday=12 mycommunityname
 If you don't want the betbot to carry out any operations on your games you can add the ```--dry-run``` parameter. This prevents the betbot from submitting any bets to your prediction games.
 
 ### Match Predictor Functions
-By default the betbot app uses the first (in alphabetically order) detected prediction algorithm in the prediction subfolder. You can also specify a predictor method by using the ```--predictor <predictorname>``` parameter.
+By default, the betbot app uses the first (in alphabetically order) detected prediction algorithm in the prediction subfolder. You can also specify a predictor method by using the ```--predictor <predictorname>``` parameter.
 
 ```console
 $ kicktippbb.py --use-login-token c3HfazFh6sd --predictor CalculationPredictor mycommunityname
@@ -135,4 +135,14 @@ Options:
     --predictor <value>         A specific predictor name to be used during calculation
     --dry-run                   Dont place any bet just print out predicitons
     --matchday <value>          Choose a specific matchday in the range of 1 to 34 to place bets on  
+```
+
+#### Docker container
+
+To run the script in a docker environment there is a compose file.
+You have to edit the file for yourself to set the login token and the community.
+
+```shell
+docker compose build
+docker compose up
 ```
