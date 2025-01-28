@@ -50,7 +50,7 @@ spec:
                 - "--predictor"
                 - {{ .Values.betbot.predictor }}
                 {{- end }}
-                - {{ .Values.betbot.community | quote }}
+                - {{ .Values.betbot.community }}
               {{- with .Values.resources }}
               resources:
                 {{ toYaml . | nindent 14 }}
