@@ -41,7 +41,7 @@ URL_BASE = 'http://www.kicktipp.de'
 URL_LOGIN = URL_BASE + '/info/profil/login'
 
 DEADLINE_REGEX = re.compile('([1-9][0-9]*)(m|h|d)')
-
+ODDS_REGEX = re.compile('([\\d.]+)')
 
 def login(browser: RoboBrowser):
     """Log into the user account by asking for username and password.
@@ -109,7 +109,7 @@ def parse_match_rows(browser: RoboBrowser, community, matchday = None):
         gasttipp = row[3].find(
             'input', id=lambda x: x and x.endswith('_gastTipp'))
         try:
-            odds=[odd.replace(" ","") for odd in row[4].get_text().split("/")]
+            odds = ODDS_REGEX.findall(row[4].get_text())
             match = Match(row[1].get_text(), row[2].get_text(), row[0].get_text(
             ), odds[0], odds[1], odds[2])
         except:
