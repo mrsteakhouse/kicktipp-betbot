@@ -37,17 +37,20 @@ spec:
                   value: {{ .value }}
                   {{- end }}
                   {{- end }}
-
-              command:
+              args:
                 - "--use-login-token"
-                - "$LOGIN_TOKEN"
+                - $LOGIN_TOKEN
                 {{- if .Values.betbot.dryRun }}
                 - "--dry-run"
                 {{- end }}
                 {{- if .Values.betbot.overrideBets }}
                 - "--override-bets"
                 {{- end }}
-                - "{{ .Values.betbot.community }}"
+                {{- if .Values.betbot.predictor }}
+                - "--predictor"
+                - {{ .Values.betbot.predictor }}
+                {{- end }}
+                - {{ .Values.betbot.community | quote }}
               {{- with .Values.resources }}
               resources:
                 {{ toYaml . | nindent 14 }}
