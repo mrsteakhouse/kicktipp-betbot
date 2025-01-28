@@ -1,18 +1,29 @@
-name: helm-chart
+name: Release Charts
 
 on:
   push:
+    branches:
+      - main
 
 jobs:
-  docker:
+  release:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
-      - name: Push Helm chart to OCI compatible registry (Github)
-        uses: bsord/helm-push@4.1.0
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          useOCIRegistry: true
-          registry-url: oci://ghcr.io/${{ github.repository }}
-          username: mrsteakhouse
-          access-token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
-          force: true
-          chart-folder: chart
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Helm Chart Releaser
+        uses: helm/chart-releaser-action@v1.7.0
+        with:
+          charts_dir: chart
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
