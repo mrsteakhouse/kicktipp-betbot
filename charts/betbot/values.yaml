@@ -56,7 +56,9 @@ betbot:
   # Use a specific predictor.
   # Allowed values are
   # - CalculationPredictor
-  # - SimplePredcitor
+  # - SimplePredictor
+  # - ChatGPTPredictor
+  # - PoissonPredictor
 
   dryRun: false
   # Only print log messages
@@ -71,5 +73,13 @@ betbot:
 
     existingSecret:
     # Use an existing secret to fetch the login token from.
+      secretName: ""
+      secretKey: ""
+
+  # If you wish to use the ChatGPTPredictor, specify your API Key
+  openai:
+    value: ""
+    existingSecret:
+    # Use an existing secret to fetch the API key from.
       secretName: ""
       secretKey: ""

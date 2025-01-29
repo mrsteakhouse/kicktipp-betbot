@@ -3,4 +3,6 @@ services:
     build: .
     environment:
       BETBOT_LOGIN_TOKEN: ""
+      BETBOT_PREDICTOR: "PoissonPredictor"
+      BETBOT_OPENAI_API_KEY: ""
       BETBOT_COMMUNITY: ""
