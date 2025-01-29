@@ -115,8 +115,9 @@ jobs:
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git pull
           git commit -am "update chart version"
-          git push --rebase
+          git push
 
   chart:
     needs:
