@@ -49,7 +49,7 @@ betbot:
   community: ""
   # Enter your community you want to bet for
 
-  predictor: ""
+  predictor: "CalculationPredictor"
   # Use a specific predictor.
   # Allowed values are
   # - CalculationPredictor

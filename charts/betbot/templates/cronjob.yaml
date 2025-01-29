@@ -26,7 +26,7 @@ spec:
               image: {{ include "betbot.image" . }}
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               env:
-                - name: LOGIN_TOKEN
+                - name: BETBOT_LOGIN_TOKEN
                   {{- with .Values.betbot.loginToken }}
                   {{- if and (not (eq .existingSecret.secretName "")) (not (eq .existingSecret.secretKey "")) }}
                   valueFrom:
@@ -37,20 +37,20 @@ spec:
                   value: {{ .value }}
                   {{- end }}
                   {{- end }}
-              args:
-                - "--use-login-token"
-                - $LOGIN_TOKEN
-                {{- if .Values.betbot.dryRun }}
-                - "--dry-run"
+                - name: BETBOT_COMMUNITY
+                  value: {{ .Values.betbot.community }}
+                {{- with .Values.betbot.predictor }}
+                - name: BETBOT_PREDICTOR
+                  value: {{ . }}
                 {{- end }}
-                {{- if .Values.betbot.overrideBets }}
-                - "--override-bets"
+                {{- if eq .Values.betbot.dryRun true}}
+                - name: BETBOT_DRY_RUN
+                  value: "1"
                 {{- end }}
-                {{- if .Values.betbot.predictor }}
-                - "--predictor"
-                - {{ .Values.betbot.predictor }}
+                {{- if eq .Values.betbot.overrideBets true}}
+                - name: BETBOT_OVERRIDE_BETS
+                  value: "1"
                 {{- end }}
-                - {{ .Values.betbot.community }}
               {{- with .Values.resources }}
               resources:
                 {{ toYaml . | nindent 14 }}
