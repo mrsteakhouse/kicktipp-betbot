@@ -18,4 +18,8 @@ COPY --from=compiler /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 COPY . /app/
 
-ENTRYPOINT [ "python", "kicktippbb.py" ]
+ENV LOGIN_TOKEN=""
+ENV PREDICTOR="CalculationPredictor"
+ENV COMMUNITY=""
+
+ENTRYPOINT [ "./entrypoint.sh" ]

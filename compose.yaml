@@ -1,10 +1,6 @@
 services:
   betbot:
     build: .
-    command:
-      - "--use-login-token"
-      - "$LOGIN_TOKEN"
-      - "--predictor"
-      - "CalculationPredictor"
-      - "--override-bets"
-      - "$COMMUNITY"
+    environment:
+      LOGIN_TOKEN: ""
+      COMMUNITY: ""
