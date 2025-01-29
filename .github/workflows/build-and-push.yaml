@@ -68,9 +68,10 @@ jobs:
             ghcr.io/mrsteakhouse/betbot:latest
             ghcr.io/mrsteakhouse/betbot:${{ steps.appVersion.outputs.version }}
 
-      - name: Craete App Tag
+      - name: Create App Tag
         run: |
-          git push tag ${{ steps.appVersion.outputs.version }}
+          git tag ${{ steps.appVersion.outputs.version }}
+          git push origin --tags
 
   chart:
     needs:
