@@ -9,6 +9,8 @@ jobs:
     permissions:
       contents: write
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.appVersion.outputs.version }}
     steps:
       - uses: paulhatch/semantic-version@v5.4.0
         name: Application Version
@@ -72,11 +74,19 @@ jobs:
           push: true
           tags: |
             ghcr.io/mrsteakhouse/betbot:latest
-            ghcr.io/mrsteakhouse/betbot:${{ steps.appVersion.outputs.version }}
+            ghcr.io/mrsteakhouse/betbot:${{ needs.version.outputs.version }}
 
+  tag:
+    needs:
+      - version
+      - docker
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
       - name: Create App Tag
         run: |
-          git tag ${{ steps.appVersion.outputs.version }}
+          git tag ${{ needs.version.outputs.version }}
           git push origin --tags
 
   chartVersion:
