@@ -43,4 +43,18 @@ entries:
     urls:
     - https://github.com/mrsteakhouse/kicktipp-betbot/releases/download/betbot-1.0.0/betbot-1.0.0.tgz
     version: 1.0.0
-generated: "2025-01-28T16:24:38.013696681Z"
+  - apiVersion: v2
+    appVersion: 0.0.0-prerelease0
+    created: "2025-01-29T12:46:18.107116292Z"
+    description: A Helm chart to bundle the tippkick betbot into a kubernetes cronjob
+      to run periodically.
+    digest: 9082b1a5958bf3247b1ecf1f990540372b0e94e5b82ec3a47b23149dc49b5291
+    maintainers:
+    - email: mrsteakhouse1@gmail.com
+      name: Fabian Frey
+    name: betbot
+    type: application
+    urls:
+    - https://github.com/mrsteakhouse/kicktipp-betbot/releases/download/betbot-0.0.0-prerelease0/betbot-0.0.0-prerelease0.tgz
+    version: 0.0.0-prerelease0
+generated: "2025-01-29T12:46:18.107134326Z"
