@@ -24,7 +24,7 @@ class ChatGPTPredictor(PredictorBase):
             {"role": "user", "content": "Please give me a prediction for the number of goals scored by " + team_a + " and " + team_b + " in their next match, listing " + team_a + "'s goals first. Answer only with the numbers, separated by a colon."}
         ]
 
-        completion = client.chat.completions.create(model="gpt-4",messages=messages)
+        completion = client.chat.completions.create(model="gpt-3.5-turbo",messages=messages)
 
         answer = completion.choices[0].message.content
 
@@ -34,7 +34,7 @@ class ChatGPTPredictor(PredictorBase):
         except:
             messages.append({"role": "assistant", "content": answer })
             messages.append({"role": "user", "content": "In this case, just give a guess. Answer only with the numbers, separated by a colon and listing " + team_a + "'s goals first."})
-            completion = client.chat.completions.create(model="gpt-4",messages=messages)
+            completion = client.chat.completions.create(model="gpt-3.5-turbo",messages=messages)
             answer = completion.choices[0].message.content
             score_a = int(answer.split(":")[0])
             score_b = int(answer.split(":")[1])
