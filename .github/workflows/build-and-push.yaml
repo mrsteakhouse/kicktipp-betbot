@@ -12,6 +12,11 @@ jobs:
     outputs:
       version: ${{ steps.appVersion.outputs.version }}
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
       - uses: paulhatch/semantic-version@v5.4.0
         name: Application Version
         id: appVersion
@@ -22,11 +27,6 @@ jobs:
           version_format: "${major}.${minor}.${patch}"
           bump_each_commit: 'true'
           debug: false
-
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Set app version
         run: |
@@ -78,9 +78,7 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
       - name: Create App Tag
         run: |
           git tag ${{ needs.version.outputs.version }}
@@ -93,6 +91,11 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - uses: paulhatch/semantic-version@v5.4.0
         name: Chart Version
         id: chartVersion
@@ -103,11 +106,6 @@ jobs:
           version_format: "${major}.${minor}.${patch}"
           change_path: "charts"
           bump_each_commit: 'true'
-
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
 
       - name: Set chart version
         run: |
