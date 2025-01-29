@@ -19,7 +19,7 @@ jobs:
           tag_prefix: "v"
           major_pattern: "(feat)"
           minor_pattern: "(fix)"
-          version_format: "${major}.${minor}.${patch}-prerelease${increment}"
+          version_format: "${major}.${minor}.${patch}"
           bump_each_commit: 'true'
           debug: false
 
@@ -100,7 +100,7 @@ jobs:
           tag_prefix: "betbot-"
           major_pattern: "(feat)"
           minor_pattern: "(fix)"
-          version_format: "${major}.${minor}.${patch}-prerelease${increment}"
+          version_format: "${major}.${minor}.${patch}"
           change_path: "charts"
           bump_each_commit: 'true'
 
