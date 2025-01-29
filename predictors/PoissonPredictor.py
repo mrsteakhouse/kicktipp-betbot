@@ -5,7 +5,7 @@ import numpy as np
 import penaltyblog as pb
 
 
-class AwesomePredictor(PredictorBase):
+class PoissonPredictor(PredictorBase):
     MAX_GOALS = 15
 
     def calculate_probabilities(self, rate_home, rate_deuce, rate_road):
