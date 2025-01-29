@@ -19,6 +19,7 @@ jobs:
           major_pattern: "(feat)"
           minor_pattern: "(fix)"
           version_format: "${major}.${minor}.${patch}-prerelease${increment}"
+          bump_each_commit: 'true'
           debug: false
 
       - name: Checkout
@@ -89,6 +90,7 @@ jobs:
           minor_pattern: "(fix)"
           version_format: "${major}.${minor}.${patch}-prerelease${increment}"
           change_path: "charts"
+          bump_each_commit: 'true'
 
       - name: Checkout
         uses: actions/checkout@v2
