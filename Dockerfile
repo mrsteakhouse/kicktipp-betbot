@@ -1,5 +1,5 @@
-FROM python:3.13-slim as compiler
-#ENV PYTHONUNBUFFERED 1
+FROM python:3.13-slim AS compiler
+ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app/
 
@@ -10,7 +10,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 COPY ./requirements.txt /app/requirements.txt
 RUN pip install -Ur requirements.txt
 
-FROM python:3.13-slim as runner
+FROM python:3.13-slim AS runner
 WORKDIR /app/
 COPY --from=compiler /opt/venv /opt/venv
 

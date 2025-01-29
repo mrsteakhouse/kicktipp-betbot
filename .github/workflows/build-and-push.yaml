@@ -80,6 +80,7 @@ jobs:
 
       - name: Create App Tag
         run: |
+          git pull
           git tag ${{ needs.version.outputs.version }}
           git push origin --tags
 
@@ -91,9 +92,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - run: |
+          git pull
 
       - uses: paulhatch/semantic-version@v5.4.0
         name: Chart Version
@@ -115,7 +118,6 @@ jobs:
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git pull
           git commit -am "update chart version"
           git push
 
@@ -126,9 +128,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - run: |
+          git pull
 
       - name: Set git config
         continue-on-error: true
