@@ -25,6 +25,7 @@ jobs:
           major_pattern: "(feat)"
           minor_pattern: "(fix)"
           version_format: "${major}.${minor}.${patch}"
+          bump_each_commit: 'true'
 
       - name: Set app version
         run: |
@@ -107,6 +108,7 @@ jobs:
           minor_pattern: "(fix)"
           version_format: "${major}.${minor}.${patch}"
           change_path: "charts"
+          bump_each_commit: 'true'
 
       - name: Set chart version
         run: |
