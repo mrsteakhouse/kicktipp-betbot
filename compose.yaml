@@ -2,5 +2,5 @@ services:
   betbot:
     build: .
     environment:
-      LOGIN_TOKEN: ""
-      COMMUNITY: ""
+      BETBOT_LOGIN_TOKEN: ""
+      BETBOT_COMMUNITY: ""

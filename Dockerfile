@@ -18,8 +18,10 @@ COPY --from=compiler /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 COPY . /app/
 
-ENV LOGIN_TOKEN=""
-ENV PREDICTOR="CalculationPredictor"
-ENV COMMUNITY=""
+ENV BETBOT_LOGIN_TOKEN=""
+ENV BETBOT_PREDICTOR="CalculationPredictor"
+ENV BETBOT_COMMUNITY=""
+ENV BETBOT_DRY_RUN=""
+ENV BETBOT_OVERRIDE_BETS=""
 
 ENTRYPOINT [ "./entrypoint.sh" ]
