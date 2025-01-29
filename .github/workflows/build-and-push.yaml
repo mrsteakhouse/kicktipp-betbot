@@ -106,7 +106,6 @@ jobs:
 
   tag:
     needs:
-      - version
       - docker
     runs-on: ubuntu-latest
     permissions:
