@@ -118,11 +118,11 @@ jobs:
 
       - name: Commit chart version
         if: steps.chartVersion.outputs.changed
+        continue-on-error: true
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git commit -am "update chart version"
-          git tag ${{ steps.chartVersion.outputs.version }}
           git push
 
   chart:
