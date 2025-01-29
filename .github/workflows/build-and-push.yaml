@@ -28,7 +28,7 @@ jobs:
 
       - name: Set app version
         run: |
-          sed 's/^\(appVersion: \).*$/\1${{ steps.appVersion.outputs.version }}/gm'
+          sed -i 's/^\(appVersion: \).*$/\1${{ steps.chartVersion.outputs.version }}/gm' charts/betbot/Chart.yaml
           
       - name: Commit app version
         run: |
@@ -91,7 +91,7 @@ jobs:
 
       - name: Set chart version
         run: |
-          sed 's/^\(version: \).*$/\1${{ steps.chartVersion.outputs.version }}/gm'
+          sed -i 's/^\(version: \).*$/\1${{ steps.chartVersion.outputs.version }}/gm' charts/betbot/Chart.yaml
 
       - name: Commit chart version
         run: |
