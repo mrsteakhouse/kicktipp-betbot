@@ -28,13 +28,14 @@ jobs:
 
       - name: Set app version
         run: |
-          sed -i 's/^\(appVersion: \).*$/\1${{ steps.chartVersion.outputs.version }}/gm' charts/betbot/Chart.yaml
+          sed -i 's/^\(appVersion: \).*$/\1${{ steps.appVersion.outputs.version }}/gm' charts/betbot/Chart.yaml
           
       - name: Commit app version
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git commit -am "update app version"
+          git tag ${{ steps.appVersion.outputs.version }}
           git push
 
       - name: Login to Docker Hub
@@ -67,6 +68,10 @@ jobs:
             ghcr.io/mrsteakhouse/betbot:latest
             ghcr.io/mrsteakhouse/betbot:${{ steps.appVersion.outputs.version }}
 
+      - name: Craete App Tag
+        run: |
+          git push tag ${{ steps.appVersion.outputs.version }}
+
   chart:
     needs:
       - docker
@@ -78,7 +83,7 @@ jobs:
         name: Chart Version
         id: chartVersion
         with:
-          tag_prefix: "v"
+          tag_prefix: "betbot-"
           major_pattern: "(feat)"
           minor_pattern: "(fix)"
           version_format: "${major}.${minor}.${patch}-prerelease${increment}"
@@ -98,6 +103,7 @@ jobs:
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git commit -am "update chart version"
+          git tag ${{ steps.chartVersion.outputs.version }}
           git push
 
       - name: Helm Chart Releaser

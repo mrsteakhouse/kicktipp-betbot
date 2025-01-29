@@ -3,7 +3,7 @@ name: betbot
 description: A Helm chart to bundle the tippkick betbot into a kubernetes cronjob to run periodically.
 type: application
 version: 1.0.2
-appVersion: 
+appVersion: 1.0.0
 maintainers:
   - name: Fabian Frey
     email: mrsteakhouse1@gmail.com
