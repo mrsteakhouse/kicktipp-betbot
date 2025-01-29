@@ -32,6 +32,7 @@ jobs:
           sed -i 's/^\(appVersion: \).*$/\1${{ steps.appVersion.outputs.version }}/gm' charts/betbot/Chart.yaml
           
       - name: Commit app version
+        if: steps.appVersion.outputs.changed
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
@@ -102,6 +103,7 @@ jobs:
           sed -i 's/^\(version: \).*$/\1${{ steps.chartVersion.outputs.version }}/gm' charts/betbot/Chart.yaml
 
       - name: Commit chart version
+        if: steps.chartVersion.outputs.changed
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
