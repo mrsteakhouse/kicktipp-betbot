@@ -7,11 +7,10 @@ metadata:
   name: {{ template "betbot.fullname" . }}
 spec:
   concurrencyPolicy: Forbid
-  failedJobsHistoryLimit: 1
-  successfulJobsHistoryLimit: 1
   schedule: {{ .Values.betbot.schedule }}
   jobTemplate:
     spec:
+      ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
       template:
         metadata:
           labels:

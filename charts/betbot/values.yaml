@@ -42,6 +42,9 @@ affinity: {}
 
 restartPolicy: Never
 
+ttlSecondsAfterFinished: 300
+# The number of seconds to keep any finished jobs
+
 betbot:
   schedule: "0 10 * * 1,5"
   # Configure the  cronjob when the script should run
