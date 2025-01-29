@@ -33,6 +33,7 @@ jobs:
           
       - name: Commit app version
         if: steps.appVersion.outputs.changed
+        continue-on-error: true
         run: |
           git config --global user.name "$GITHUB_ACTOR"
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
