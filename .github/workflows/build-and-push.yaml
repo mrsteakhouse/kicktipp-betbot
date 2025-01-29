@@ -1,4 +1,4 @@
-name: docker-image
+name: Build and publish
 
 on:
   push:
@@ -79,6 +79,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Create App Tag
         run: |
           git tag ${{ needs.version.outputs.version }}
@@ -86,13 +87,14 @@ jobs:
 
   chartVersion:
     needs:
+      - docker
       - version
     permissions:
       contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
@@ -127,7 +129,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
