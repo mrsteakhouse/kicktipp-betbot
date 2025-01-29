@@ -66,8 +66,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-#            mrsteakhouse/betbot:latest
-#            mrsteakhouse/betbot:${{ steps.appVersion.outputs.version }}
             ghcr.io/mrsteakhouse/betbot:latest
             ghcr.io/mrsteakhouse/betbot:${{ steps.appVersion.outputs.version }}
 
