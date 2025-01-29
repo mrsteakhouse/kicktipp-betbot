@@ -36,17 +36,6 @@ spec:
                   value: {{ .value }}
                   {{- end }}
                   {{- end }}
-                - name: BETBOT_OPENAI_API_KEY
-                  {{- with .Values.betbot.openai }}
-                  {{- if and (not (eq .existingSecret.secretName "")) (not (eq .existingSecret.secretKey "")) }}
-                  valueFrom:
-                    secretKeyRef:
-                      name: {{ .existingSecret.secretName }}
-                      key: {{ .existingSecret.secretKey }}
-                  {{- else }}
-                  value: {{ .value }}
-                  {{- end }}
-                  {{- end }}
                 - name: BETBOT_COMMUNITY
                   value: {{ .Values.betbot.community }}
                 {{- with .Values.betbot.predictor }}
