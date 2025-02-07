@@ -39,7 +39,7 @@ class PoissonPredictor(PredictorBase):
 
         res = minimize(
             fun=self._mse,
-            x0={0.5, -0.5},  # Initial guess for log(lambda) values
+            x0=[0.5, -0.5],  # Initial guess for log(lambda) values
             args=(home, draw, away),
             options=options,
         )
