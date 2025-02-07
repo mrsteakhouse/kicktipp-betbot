@@ -8,6 +8,8 @@ metadata:
 spec:
   concurrencyPolicy: Forbid
   schedule: {{ .Values.betbot.schedule }}
+  failedJobsHistoryLimit: 1
+  successfulJobsHistoryLimit: 1
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
