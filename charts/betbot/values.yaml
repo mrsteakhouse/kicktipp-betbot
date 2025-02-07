@@ -17,24 +17,25 @@ fullnameOverride: ""
 podAnnotations: {}
 
 securityContext: {}
-  # capabilities:
-  #   drop:
-  #   - ALL
-  # readOnlyRootFilesystem: true
-  # runAsNonRoot: true
-  # runAsUser: 1000
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
 
+
+# We usually recommend not to specify default resources and to leave this as a conscious
+# choice for the user. This also increases chances charts run on environments with little
+# resources, such as Minikube. If you do want to specify resources, uncomment the following
+# lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
 resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
 
 nodeSelector: {}
 
@@ -42,35 +43,35 @@ affinity: {}
 
 restartPolicy: Never
 
-ttlSecondsAfterFinished: 300
 # The number of seconds to keep any finished jobs
+ttlSecondsAfterFinished: 28800
 
 betbot:
-  schedule: "0 10 * * 1,5"
   # Configure the  cronjob when the script should run
+  schedule: "0 10 * * 1,5"
 
-  community: ""
   # Enter your community you want to bet for
+  community: ""
 
-  predictor: "CalculationPredictor"
   # Use a specific predictor.
   # Allowed values are
   # - CalculationPredictor
   # - SimplePredictor
   # - PoissonPredictor
+  predictor: "CalculationPredictor"
 
-  dryRun: false
   # Only print log messages
+  dryRun: false
 
-  overrideBets: false
   # Override already entered bets
+  overrideBets: false
 
-  loginToken:
   # Configure the login token to use
-    value: ""
+  loginToken:
     # Set the value of the login token directly.
+    value: ""
 
-    existingSecret:
     # Use an existing secret to fetch the login token from.
+    existingSecret:
       secretName: ""
       secretKey: ""
