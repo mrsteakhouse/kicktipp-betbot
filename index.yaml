@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   betbot:
   - apiVersion: v2
+    appVersion: 1.1.65
+    created: "2025-02-07T19:36:10.702766027Z"
+    description: A Helm chart to bundle the tippkick betbot into a kubernetes cronjob
+      to run periodically.
+    digest: c02269ca3d151a4eb3cce5d87120005eae4813cad7cffd1cec46e9a13807afcc
+    maintainers:
+    - email: mrsteakhouse1@gmail.com
+      name: Fabian Frey
+    name: betbot
+    type: application
+    urls:
+    - https://github.com/mrsteakhouse/kicktipp-betbot/releases/download/betbot-1.1.20/betbot-1.1.20.tgz
+    version: 1.1.20
+  - apiVersion: v2
     appVersion: 1.1.59
     created: "2025-01-29T15:14:39.204865479Z"
     description: A Helm chart to bundle the tippkick betbot into a kubernetes cronjob
@@ -183,4 +197,4 @@ entries:
     urls:
     - https://github.com/mrsteakhouse/kicktipp-betbot/releases/download/betbot-0.0.0-prerelease0/betbot-0.0.0-prerelease0.tgz
     version: 0.0.0-prerelease0
-generated: "2025-01-29T15:14:39.204960688Z"
+generated: "2025-02-07T19:36:10.70287463Z"
