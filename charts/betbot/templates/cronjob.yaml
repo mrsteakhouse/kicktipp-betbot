@@ -13,6 +13,7 @@ spec:
   jobTemplate:
     spec:
       ttlSecondsAfterFinished: {{ .Values.ttlSecondsAfterFinished }}
+      backoffLimit: 3
       template:
         metadata:
           labels:
