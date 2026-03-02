@@ -1,3 +1,6 @@
+""":"
+"exec" "`dirname $0`/.env/bin/python" "$0" "$@"
+":"""
 """KickTipp BetBot
 Automated kicktipp.de bet placement.
 
@@ -37,7 +40,7 @@ import predictors.base
 from helper.deadline import is_before_dealine, timedelta_tostring
 from helper.match import Match
 
-URL_BASE = 'http://www.kicktipp.de'
+URL_BASE = 'https://www.kicktipp.de'
 URL_LOGIN = URL_BASE + '/info/profil/login'
 
 DEADLINE_REGEX = re.compile('([1-9][0-9]*)(m|h|d)')
