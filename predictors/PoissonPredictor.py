@@ -9,7 +9,7 @@ class PoissonPredictor(PredictorBase):
     MAX_GOALS = 15
 
     def calculate_probabilities(self, rate_home, rate_deuce, rate_road):
-        return pb.implied.power([rate_home, rate_deuce, rate_road])["implied_probabilities"]
+        return pb.implied.calculate_implied([rate_home, rate_deuce, rate_road]).probabilities
 
     def _mse(self, params, home, draw, away):
         exp_params = np.exp(params)
