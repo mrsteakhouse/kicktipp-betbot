@@ -1,6 +1,3 @@
-""":"
-"exec" "`dirname $0`/.env/bin/python" "$0" "$@"
-":"""
 """KickTipp BetBot
 Automated kicktipp.de bet placement.
 
@@ -112,7 +109,7 @@ def parse_match_rows(browser: RoboBrowser, community, matchday = None):
         gasttipp = row[3].find(
             'input', id=lambda x: x and x.endswith('_gastTipp'))
         try:
-            odds = ODDS_REGEX.findall(row[4].get_text())
+            odds = [item.text for item in row[4].find_all(class_='quote-text')]
             match = Match(row[1].get_text(), row[2].get_text(), row[0].get_text(
             ), odds[0], odds[1], odds[2])
         except:
