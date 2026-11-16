@@ -101,8 +101,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/mrsteakhouse/betbot:latest
-            ghcr.io/mrsteakhouse/betbot:${{ needs.version.outputs.version }}
+            ghcr.io/mrsteakhouse/betbot-legacy:latest
+            ghcr.io/mrsteakhouse/betbot-legacy:${{ needs.version.outputs.version }}
 
   tag:
     needs:
